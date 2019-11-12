@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS resources (
     altmetric INTEGER,
     github TEXT,
     youtube TEXT,
-    parameter TEXT
+    parameter TEXT,
+    category TEXT
 );
 

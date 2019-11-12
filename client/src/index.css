@@ -6,3 +6,67 @@
    ul, li {
     list-style: none;
    }
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.nav {
+    position:relative;
+}
+.menu {
+    width: 200px;
+    position:absolute;
+    top: 75px;
+    left: 0;
+    font-size: 20px;
+    text-align:center;
+}
+
+.menu a:nth-child(even) {
+    background-color: #D90E8C;
+    color: #eee;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+}
+.menu a {
+    text-align:center;
+}
+.menu a:nth-child(odd) {
+    background-color: #47BDF2;
+    color: #eee;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+}
+.menu a:hover {
+    background-color: #343a40; 
+}
+
+.menu a.active{
+    background-color: #D90E8C;
+    color: white;
+}
+
+.slideshow {
+    position:absolute;
+    left: 200px;
+    top: 75px;
+    background-color: #343a40;
+    width: calc(100% - 200px);
+    height: 200px;
+}
+
+.apps {
+    position:absolute;
+    top: 500px;
+    left: 200px;
+}
+
+.webApp {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    text-align: center;
+}
