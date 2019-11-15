@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel'
 import biojupies from '../img/biojupies.png'
 import geneshot from '../img/geneshot.png'
-import pubmed from '../img/pubmed.png'
+import pub from '../img/pub.png'
 import youtube from '../img/youtube.png'
 import github from '../img/github.png'
 import altmetric from '../img/alt.png'
@@ -79,105 +79,333 @@ class Home extends Component {
         this.createResource(resource);
     }
 
-    renderResources() {
-        
-        const rnaSeq = [];
 
-        if (this.state.dataLoaded) {
-            
-            this.state.resources.map(resource => {
-                console.log(resource);
-                if (resource.category == 'RNA-seq') {
-                    rnaSeq.push(resource);
-                }
-                console.log(rnaSeq);
-                return (
-                    <Container>
-                        <Row>
-                            <Col sm={4}>
-                    <div className="webApp" key={resource.id}>
-                        <Link to={`/apps/${resource.parameter}`}><img src={resource.logo} /> </Link>
-                        <h4>{resource.title}</h4>
-                        <a href={resource.website}>Website</a>
-                        <br/>
-                        <a href={resource.doc}>Documentation</a>
-                        <a href={resource.pub}>Publication</a>
-                        <p>{resource.keywords}</p>
-                        <p>{resource.citations}</p>
-                        <p>{resource.pmid}</p>
-                        <p>{resource.altmetric}</p>
-                        <a href={resource.github}>Github</a>
-                        <a href={resource.youtube}>Youtube</a>
-                    </div>
-                    </Col>
-                    </Row>
-                    </Container>
-
-                    
-                )
-                
-            })
-            rnaSeq.map(i => {
-                console.log(i);
-                // return (
-               
-    
-      
-          
-                        
-                //     <div className="webApp" key={i.id}>
-                //           <Link to={`/apps/${i.parameter}`}><img src={i.logo} /> </Link>
-                //           <h4>{i.title}</h4>
-                //           <img src={pubmed} width="40px" /><img src={altmetric} width="40px" /><img src={github} width="40px" /><img src={youtube} width="40px"  />
-                //       </div> 
-                  
-                      
-              
-                       
-                      
-                //   )   
-            })
-            
-        } else {
-            <p> Loading...</p>
-        } 
-
-       
-
-          
-    
-          
-    }
-         
     renderRNAseq() {
         const rnaSeq = [];
         if (this.state.dataLoaded) {
-            return this.state.resources.map(resource => {
-                if (resource.category == 'RNA-seq') {
-                    rnaSeq.push(resource);
-                }
-                return (
-                    rnaSeq.map(res => {
-                    <Container>
-                        <Row>
-                            <Col sm={4}>
-                    <div className="webApp" key={res.id}>
-                        <Link to={`/apps/${res.parameter}`}><img src={res.logo} /> </Link>
-                        <h4>{res.title}</h4>
-                        
-                    </div>
-                    </Col>
+          this.state.resources.map(resource => {
+            if (resource.category == 'RNA-seq') {
+              rnaSeq.push(resource);
+            }
+          })
+      
+          return (
+            rnaSeq.map(res => {
+                
+            if(res.title=="BioJupies") {
+                return (<Container>
+                    <Row>
+                     
+                        <div className="webApp" key={res.id}>
+                          <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="150px"/> </Link>
+                          <h4 className="title">{res.title}</h4> 
+                          <div className="icons">
+                          <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                          </div> 
+                        </div>
+                      
                     </Row>
-                    </Container>})
-                    
-
-                    
-                )
-            })
+                  </Container>)
+            } else {
+                return (<Container>
+                    <Row>
+                     
+                        <div className="webApp" key={res.id}>
+                          <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                          <h4 className="title">{res.title}</h4> 
+                          <div className="icons">
+                          <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                          </div> 
+                        </div>
+                      
+                    </Row>
+                  </Container>)
+            }
+        
+             
+            }))          
         } else {
-            <p>Loading...</p>
+          <p>Loading...</p>
         }
-    }
+      }
+
+
+      renderProteomics() {
+        const proteomics = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'proteomics') {
+              proteomics.push(resource);
+            }
+          })
+      
+          return (
+            proteomics.map(res => {
+              console.log(res);
+              return (
+              <Container>
+                <Row>
+                 
+                    <div className="webApp" key={res.id}>
+                      <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                      <h4 className="title">{res.title}</h4> 
+                      <div className="icons">
+                      <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                      </div> 
+                    </div>
+                  
+                </Row>
+              </Container>)
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+      renderVis() {
+        const vis = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'visualization') {
+              vis.push(resource);
+            }
+          })
+      
+          return (
+            vis.map(res => {
+                if(res.title=="Clustergrammer"){
+                    return (
+                        <Container>
+                          <Row>
+                           
+                              <div className="webApp" key={res.id}>
+                                <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="150px"/> </Link>
+                                <h4 className="title">{res.title}</h4> 
+                                <div className="icons">
+                                <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                                </div> 
+                              </div>
+                            
+                          </Row>
+                        </Container>)
+                } 
+                else {
+                    return (
+                        <Container>
+                          <Row>
+                           
+                              <div className="webApp" key={res.id}>
+                                <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                                <h4 className="title">{res.title}</h4> 
+                                <div className="icons">
+                                <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                                </div> 
+                              </div>
+                            
+                          </Row>
+                        </Container>)
+                }
+              console.log(res);
+              
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+      renderDatabases() {
+        const databases = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'databases') {
+              databases.push(resource);
+            }
+          })
+      
+          return (
+            databases.map(res => {
+              console.log(res);
+              return (
+              <Container>
+                <Row>
+                 
+                    <div className="webApp" key={res.id}>
+                      <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                      <h4 className="datatitle">{res.title}</h4> 
+                      <div className="icons">
+                      <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                      </div> 
+                    </div>
+                  
+                </Row>
+              </Container>)
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+      renderDatabases() {
+        const databases = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'databases') {
+              databases.push(resource);
+            }
+          })
+      
+          return (
+            databases.map(res => {
+              console.log(res);
+              return (
+              <Container>
+                <Row>
+                 
+                    <div className="webApp" key={res.id}>
+                      <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                      <h4 className="datatitle">{res.title}</h4> 
+                      <div className="icons">
+                      <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                      </div> 
+                    </div>
+                  
+                </Row>
+              </Container>)
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+      renderCommandLine() {
+        const command = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'command line') {
+              command.push(resource);
+            }
+          })
+      
+          return (
+            command.map(res => {
+              console.log(res);
+              return (
+              <Container>
+                <Row>
+                 
+                    <div className="webApp" key={res.id}>
+                      <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                      <h4 className="datatitle">{res.title}</h4> 
+                      <div className="icons">
+                      <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                      </div> 
+                    </div>
+                  
+                </Row>
+              </Container>)
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+      renderLincs() {
+        const lincs = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'lincs') {
+              lincs.push(resource);
+            }
+          })
+      
+          return (
+            lincs.map(res => {
+              console.log(res);
+              return (
+              <Container>
+                <Row>
+                 
+                    <div className="webApp" key={res.id}>
+                      <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                      <h4 className="datatitle">{res.title}</h4> 
+                      <div className="icons">
+                      <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                      </div> 
+                    </div>
+                  
+                </Row>
+              </Container>)
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+      renderIdg() {
+        const idg = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'idg') {
+              idg.push(resource);
+            }
+          })
+      
+          return (
+            idg.map(res => {
+              console.log(res);
+              return (
+              <Container>
+                <Row>
+                 
+                    <div className="webApp" key={res.id}>
+                      <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                      <h4 className="datatitle">{res.title}</h4> 
+                      <div className="icons">
+                      <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                      </div> 
+                    </div>
+                  
+                </Row>
+              </Container>)
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+      renderInter() {
+        const inter = [];
+        if (this.state.dataLoaded) {
+          this.state.resources.map(resource => {
+            if (resource.category == 'interoperability') {
+              inter.push(resource);
+            }
+          })
+      
+          return (
+            inter.map(res => {
+              console.log(res);
+              return (
+              <Container>
+                <Row>
+                 
+                    <div className="webApp" key={res.id}>
+                      <Link to={`/apps/${res.parameter}`}><img className="logo" src={res.logo} width="100px"/> </Link>
+                      <h4 className="datatitle">{res.title}</h4> 
+                      <div className="icons">
+                      <img src={pub} width="30px" /><img src={altmetric} width="30px" /><img src={github} width="30px" /><img src={youtube} width="30px"  />
+                      </div> 
+                    </div>
+                  
+                </Row>
+              </Container>)
+            }))          
+        } else {
+          <p>Loading...</p>
+        }
+      }
+
+
 
   render() {
     return (
@@ -212,10 +440,88 @@ class Home extends Component {
                             </Carousel>
            
           <Container className="apps">
-              
+              <div className="RNA-seq">
+                  <div className="heading">
+          <h1> RNA-seq </h1>
+          <span className="seeMore">See More</span>
+          </div>
+        <div className="webApps">
          {this.renderRNAseq()}
+         </div>
+         </div>
+
+         <div className="proteomics">
+             <div className="heading">
+                 <h1>Proteomics</h1>
+                 <span className="seeMore">See More</span>
+            </div>
+            <div className="webApps">
+                {this.renderProteomics()}
+             </div>
+         </div>
+
+         <div className="visualization">
+             <div className="heading">
+                 <h1>Visualization</h1>
+                 <span className="seeMore">See More</span>
+            </div>
+            <div className="webApps">
+                {this.renderVis()}
+             </div>
+         </div>
+
+         <div className="databases">
+             <div className="heading">
+                 <h1>Databases</h1>
+                 <span className="seeMore">See More</span>
+            </div>
+            <div className="webApps">
+                {this.renderDatabases()}
+             </div>
+         </div>
+         <div className="command">
+             <div className="heading">
+                 <h1>Command Line</h1>
+                 <span className="seeMore">See More</span>
+            </div>
+            <div className="webApps">
+                {this.renderCommandLine()}
+             </div>
+         </div>
+
+         <div className="command">
+             <div className="heading">
+                 <h1>LINCS</h1>
+                 <span className="seeMore">See More</span>
+            </div>
+            <div className="webApps">
+                {this.renderLincs()}
+             </div>
+         </div>
+         
+         <div className="idg">
+             <div className="heading">
+                 <h1>IDG</h1>
+                 <span className="seeMore">See More</span>
+            </div>
+            <div className="webApps">
+                {this.renderIdg()}
+             </div>
+         </div>
+
+         <div className="inter">
+             <div className="heading">
+                 <h1>Interoperability</h1>
+                 <span className="seeMore">See More</span>
+            </div>
+            <div className="webApps">
+                {this.renderInter()}
+             </div>
+         </div>
          </Container>
       </div>
+
+      
     )
   }
 };

@@ -56,6 +56,7 @@
     background-color: #343a40;
     width: calc(100% - 200px);
     height: 200px;
+    position:relative;
 }
 
 .apps {
@@ -69,4 +70,61 @@
     height: 200px;
     border: 1px solid black;
     text-align: center;
+    position:relative;
 }
+
+.title {
+    padding-top: 5px;
+    font-size: 26px;
+    position:absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo {
+    padding-top: 10px;
+    /* position: absolute;
+    top: 50%;
+    transform: translateY(-50%); */
+}
+
+.icons {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.webApps {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.heading h1 {
+    font-size: 24px;
+    padding: 10px;
+}
+.seeMore {
+    background-color: #D90E8C;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.datatitle {
+    font-size: 24px;
+    padding-top: 5px;
+    position:absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
